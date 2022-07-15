@@ -22,7 +22,9 @@ export class MessageService {
   }
 
   findAll() {
-    return Message.find();
+    return Message.find({
+      relations: ["chat"]
+    });
   }
 
   findOne(id: number) {
