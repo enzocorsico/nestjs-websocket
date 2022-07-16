@@ -1,5 +1,5 @@
 import { Chat } from "src/chat/entities/chat.entity";
-import { BaseEntity, Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Message extends BaseEntity {
@@ -8,6 +8,9 @@ export class Message extends BaseEntity {
 
     @Column()
     contenu: string;
+
+    @CreateDateColumn()
+    dateCreation: Date;
 
     @ManyToOne(type => Chat, chat => chat.messages, { nullable: false, onDelete: "CASCADE" })
     chat: Chat
